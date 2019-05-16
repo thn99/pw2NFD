@@ -1,7 +1,7 @@
 <?php
 
 include_once $_SESSION["root"].'php/DAO/LoginDAO.php';
-include_once $_SESSION["root"].'php/Model/ModelFuncionario.php';
+include_once $_SESSION["root"].'php/Model/ModelUser.php';
 
 class ControllerLogin {
 	function verificaLogin(){
@@ -12,7 +12,7 @@ class ControllerLogin {
 			$senha=$_POST["senha"];	
 			
 			$loginDAO = new LoginDAO();
-			$funcionario = new ModelFuncionario();	
+			$funcionario = new ModelUser();	
 			//Retorna um funcionario ou retorna NULL;
 			$funcionario=$loginDAO->verificaLogin($login,$senha);
 			/*echo "<pre>";

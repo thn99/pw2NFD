@@ -1,7 +1,7 @@
 <?php
 //Add a classe responsavel por fazer a conexao com banco de dados
 include_once $_SESSION["root"].'php/DAO/DatabaseConnection.php';
-include_once $_SESSION["root"].'php/Model/ModelFuncionario.php';
+include_once $_SESSION["root"].'php/Model/ModelUser.php';
 class LoginDAO {
 	/**
      * Verifica se o login existe no banco
@@ -32,7 +32,7 @@ class LoginDAO {
 			return null;
 		}
 		//Se chegou até aqui é pq o login existe no banco, passo os dados que vieram de banco para o Model correspondente
-		$funcionario = new ModelFuncionario();	
+		$funcionario = new ModelUser();	
 
 		//Vejam o funcionamento do método setFuncionarioFromDataBase
 		$funcionario->setFuncionarioFromDataBase($linha);

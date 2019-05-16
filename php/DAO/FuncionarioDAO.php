@@ -1,7 +1,7 @@
 <?php
 //Add a classe responsavel por fazer a conexao com banco de dados
 include_once $_SESSION["root"].'php/DAO/DatabaseConnection.php';
-include_once $_SESSION["root"].'php/Model/ModelFuncionario.php';
+include_once $_SESSION["root"].'php/Model/ModelUser.php';
 class FuncionarioDAO {
 	/*Como o PHP tem inferência de tipo, esse método, assim como outros, poderia ser mais "simples", porém estou fazendo de uma maneira que acho mais didático*/
 	function getAllFuncionarios(){	
@@ -25,7 +25,7 @@ class FuncionarioDAO {
 		$funcionarios;		
 		
 		foreach ($linhas as $value) {
-			$funcionario = new ModelFuncionario();
+			$funcionario = new ModelUser();
 			$funcionario->setFuncionarioFromDataBase($value);			
 			$funcionarios[]=$funcionario;
 		}	

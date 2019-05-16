@@ -56,7 +56,7 @@ include $_SESSION["root"].'includes/header.php';
 		}
 	}?>
 <!-- fim footer -->
-<script>		
+<script>
 	$(document).ready(function () {
         $('.cadastrarFuncionario').addClass('active');
     });

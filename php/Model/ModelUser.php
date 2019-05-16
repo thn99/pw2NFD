@@ -1,13 +1,13 @@
 <?php
-class ModelFuncionario {
+class ModelUser {
 
-	public $idFuncionario;
+	public $id;
 	public $nome; 
 	public $salario;
 	public $login;
 	public $senha; 
-	public $idPermissao;
-	public $idDepartamento;
+	public $permissao;
+	public $departamento;
 
     /**
      * Popula um obj funcionario com os dados vindos da tabela funcionario. Funciona como um construtor
@@ -17,44 +17,44 @@ class ModelFuncionario {
      * @return não há retorno.
      */
     public function setFuncionarioFromDataBase($linha){
-        $this->setIdFuncionario($linha["idFuncionario"])
+        $this->setid($linha["id"])
                ->setNome($linha["nome"])
                ->setSalario($linha["salario"])
                ->setLogin($linha['login'])
                ->setSenha($linha['senha'])
-               ->setIdPermissao($linha['idPermissao'])
-               ->setIdDepartamento($linha['idDepartamento']);
+               ->setpermissao($linha['permissao'])
+               ->setdepartamento($linha['departamento']);
     }
     public function setFuncionarioFromPOST(){
-        $this->setIdFuncionario(null)
+        $this->setid(null)
                ->setNome($_POST["nome"])
                ->setSalario($_POST["salario"])
                ->setLogin($_POST['login'])
                ->setSenha($_POST['senha'])
-               ->setIdPermissao(1)
-               ->setIdDepartamento(1);
+               ->setpermissao(1)
+               ->setdepartamento(1);
     }
 
     /**
-     * Gets the value of idFuncionario.
+     * Gets the value of id.
      *
      * @return mixed
      */
-    public function getIdFuncionario()
+    public function getid()
     {
-        return $this->idFuncionario;
+        return $this->id;
     }
 
     /**
-     * Sets the value of idFuncionario.
+     * Sets the value of id.
      *
-     * @param mixed $idFuncionario the id funcionario
+     * @param mixed $id the id funcionario
      *
      * @return self
      */
-    public function setIdFuncionario($idFuncionario)
+    public function setid($id)
     {
-        $this->idFuncionario = $idFuncionario;
+        $this->id = $id;
 
         return $this;
     }
@@ -156,48 +156,48 @@ class ModelFuncionario {
     }
 
     /**
-     * Gets the value of idPermissao.
+     * Gets the value of permissao.
      *
      * @return mixed
      */
-    public function getIdPermissao()
+    public function getpermissao()
     {
-        return $this->idPermissao;
+        return $this->permissao;
     }
 
     /**
-     * Sets the value of idPermissao.
+     * Sets the value of permissao.
      *
-     * @param mixed $idPermissao the id permissao
+     * @param mixed $permissao the id permissao
      *
      * @return self
      */
-    public function setIdPermissao($idPermissao)
+    public function setpermissao($permissao)
     {
-        $this->idPermissao = $idPermissao;
+        $this->permissao = $permissao;
         return $this;
     }
 
     /**
-     * Gets the value of idDepartamento.
+     * Gets the value of departamento.
      *
      * @return mixed
      */
-    public function getIdDepartamento()
+    public function getdepartamento()
     {
-        return $this->idDepartamento;
+        return $this->departamento;
     }
 
     /**
-     * Sets the value of idDepartamento.
+     * Sets the value of departamento.
      *
-     * @param mixed $idDepartamento the id departamento
+     * @param mixed $departamento the id departamento
      *
      * @return self
      */
-    public function setIdDepartamento($idDepartamento)
+    public function setdepartamento($departamento)
     {
-        $this->idDepartamento = $idDepartamento;
+        $this->departamento = $departamento;
 
         return $this;
     }

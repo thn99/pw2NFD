@@ -1,7 +1,7 @@
 <?php
 
 include_once $_SESSION["root"].'php/DAO/FuncionarioDAO.php';
-include_once $_SESSION["root"].'php/Model/ModelFuncionario.php';
+include_once $_SESSION["root"].'php/Model/ModelUser.php';
 
 class ControllerFuncionario {
 	function getAllFuncionarios(){
@@ -11,7 +11,7 @@ class ControllerFuncionario {
 	}
 	function setFuncionario(){
 		$funcDAO = new FuncionarioDAO();
-		$funcionario = new ModelFuncionario();
+		$funcionario = new ModelUser();
 		$funcionario->setFuncionarioFromPOST();
 		$resultadoInsercao = $funcDAO->setFuncionario($funcionario);
 			
