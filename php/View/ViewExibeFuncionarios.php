@@ -28,7 +28,7 @@ include $_SESSION["root"].'includes/header.php';
 						echo "<td>".$value->getSalario()."</td>";
 						echo "<td>".$value->getPermissao()."</td>";
 						echo "<td>". $departamento ."</td>";
-						echo "<td height='70%'>
+						echo "<td>
 								<button type='button' class='btn btn-primary' onClick={edita_usuario('" . $value->getLogin(). "');}>Editar</button>
 								<button type='button' onClick={deleta_usuario('" . $value->getLogin() . "');} class='btn btn-danger'>Delete</button>
 	      					 </td>";

@@ -7,7 +7,7 @@ session_start();
 	$_SESSION["root"] = $_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'];
 }*/
 
-$_SESSION["root"]="C:/xampp/htdocs/pw2/pw2NFD/";
+$_SESSION["root"]="./";
 //print_r($_SESSION["root"] );
 
 //Chamo o arquivo responsável por gerenciar as rotas do sistema

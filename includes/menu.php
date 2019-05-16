@@ -13,8 +13,8 @@
             <ul class="nav navbar-nav">
               <li class="cadastrarFuncionario"><a href="cadastraFuncionario">Cadastra Funcionário</a></li>
               <li class="visualizarFuncionario"><a href="exibeFuncionarios">Exibe Funcionário</a></li>
-              <li class="cadastrarDepartamento"><a href="#">Cadastra Departamento</a></li>
-              <li class=""><a href="#">Exibe Departamento</a></li>
+              <li class="cadastrarDepartamento"><a href="cadastrarDepartamento">Cadastra Departamento</a></li>
+              <li class="exibeDepartamento"><a href="exibeDepartamento">Exibe Departamento</a></li>
               <li class=""><a href="#">Sair</a></li>              
             </ul>            
           </div><!--/.nav-collapse -->

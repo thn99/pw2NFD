@@ -22,7 +22,7 @@ class DepartamentoDAO {
 				return null;
 
 		//Var que irá armazenar um array de obj do tipo funcionário
-		$departamentos;		
+			
 		
 		foreach ($linhas as $value) {
 			$departamento = new ModelDept();

@@ -48,6 +48,21 @@ else if ($action == 'postCadastraFuncionario') {
 	$cFunc = new ControllerFuncionario();
 	$cFunc->setFuncionario();
 }
+else if($action == 'postCadastraDepartamento'){
+	$cDept = new ControllerDepartamento();
+	$cDept->setDepartamento();
+}
+
+else if($action == 'exibeDepartamento'){
+	$eDept = new ControllerDepartamento();
+	$eDept->getDeptos();
+}
+
+else if($action == 'cadastrarDepartamento'){
+	$cDept = new ControllerDepartamento();
+	$cDept->setDeptos();
+}
+
 else {
 	echo "Página não encontrada!";
 	//isso trata todo erro 404, podemos criar uma view mais elegante para exibir o aviso ao usuário.
