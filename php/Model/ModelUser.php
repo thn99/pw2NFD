@@ -17,22 +17,23 @@ class ModelUser {
      * @return não há retorno.
      */
     public function setFuncionarioFromDataBase($linha){
-        $this->setid($linha["id"])
+        $this->setId($linha["id"])
                ->setNome($linha["nome"])
                ->setSalario($linha["salario"])
                ->setLogin($linha['login'])
                ->setSenha($linha['senha'])
-               ->setpermissao($linha['permissao'])
-               ->setdepartamento($linha['departamento']);
+               ->setPermissao($linha['permissao'])
+               ->setDepartamento($linha['departamento_fk']);
     }
     public function setFuncionarioFromPOST(){
-        $this->setid(null)
+
+        $this->setId(null)
                ->setNome($_POST["nome"])
                ->setSalario($_POST["salario"])
                ->setLogin($_POST['login'])
                ->setSenha($_POST['senha'])
-               ->setpermissao(1)
-               ->setdepartamento(1);
+               ->setPermissao(1)
+               ->setDepartamento($_POST['departamento']);
     }
 
     /**
@@ -40,7 +41,7 @@ class ModelUser {
      *
      * @return mixed
      */
-    public function getid()
+    public function getId()
     {
         return $this->id;
     }
@@ -52,7 +53,7 @@ class ModelUser {
      *
      * @return self
      */
-    public function setid($id)
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -160,7 +161,7 @@ class ModelUser {
      *
      * @return mixed
      */
-    public function getpermissao()
+    public function getPermissao()
     {
         return $this->permissao;
     }
@@ -172,7 +173,7 @@ class ModelUser {
      *
      * @return self
      */
-    public function setpermissao($permissao)
+    public function setPermissao($permissao)
     {
         $this->permissao = $permissao;
         return $this;
@@ -183,7 +184,7 @@ class ModelUser {
      *
      * @return mixed
      */
-    public function getdepartamento()
+    public function getDepartamento()
     {
         return $this->departamento;
     }
@@ -195,7 +196,7 @@ class ModelUser {
      *
      * @return self
      */
-    public function setdepartamento($departamento)
+    public function setDepartamento($departamento)
     {
         $this->departamento = $departamento;
 

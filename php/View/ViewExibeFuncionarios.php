@@ -8,20 +8,30 @@ include $_SESSION["root"].'includes/header.php';
 		<?php include $_SESSION["root"].'includes/menu.php';?>
 		<!-- fim menu -->	
 		<div id="principal">
-			<h1 class="text-center">Funcionários	</h1>
+			<h1 class="text-center">Funcionários</h1>
 			<table class="table table-striped">
 			<?php 
 				//$funcionarios foi criado no controller que chamou essa classe;
 				echo "<tr>";
 					echo "<th>Nome</th>";
 					echo "<th>Salário</th>";
-					echo "<th>Login</th>";
+					echo "<th scope='col'>Permissão</th>";
+					echo "<th scope='col'>Departamento</th>";
+					echo "<th scope='col'>Ação</th>";
 				echo "</tr>";
 				foreach ($funcionarios as $value) {
+					foreach($departamentos as $dept){ 
+						if($dept->getId() == $value->getDepartamento()) { $departamento = $dept->getNome();}
+					}
 					echo "<tr>";
 						echo "<td>".$value->getNome()."</td>";
 						echo "<td>".$value->getSalario()."</td>";
-						echo "<td>".$value->getLogin()."</td>";
+						echo "<td>".$value->getPermissao()."</td>";
+						echo "<td>". $departamento ."</td>";
+						echo "<td height='70%'>
+								<button type='button' class='btn btn-primary' onClick={edita_usuario('" . $value->getLogin(). "');}>Editar</button>
+								<button type='button' onClick={deleta_usuario('" . $value->getLogin() . "');} class='btn btn-danger'>Delete</button>
+	      					 </td>";
 					echo "</tr>";
 				}
 			?>

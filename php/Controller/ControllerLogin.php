@@ -22,7 +22,7 @@ class ControllerLogin {
 			//password_verify é um função do PHP que verifica se um string plain text (no caso a senha) é igual a uma hash (que foi retirada do banco)
 
 			//$_SESSION["flash"]["qualquerCoisa"] são variáveis de login que vivem apenas uma requisição, elas são usadas na view e depois destruidas.
-			if ($funcionario!=NULL && password_verify($senha,$funcionario->getSenha())) {
+			if ($funcionario!=NULL && password_verify(md5($senha), $funcionario->getSenha())) {
 				$_SESSION["logado"]=true;
 				$_SESSION["nomeLogado"]=$funcionario->getNome();
 				//Coloquei na sessão que o usuário está logado e o seu nome.

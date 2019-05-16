@@ -39,7 +39,17 @@ include $_SESSION["root"].'includes/header.php';
 						<div class="form-group">
 							<label for="salario">Salario:<span class="requerido">*</span></label>
 							<input type="text" name="salario" class="form-control" id="salario" value="<?php if(isset($_SESSION["flash"]["salario"]))echo $_SESSION["flash"]["salario"];?>">
-						</div>						
+						</div>
+						<div class="col">
+						<label for="departamento">Departamento</label>
+						<select class="form-control" name="departamento">
+							<?php
+							foreach ($departamentos as $dept){
+								echo "<option value='".$dept->getId()."'>".$dept->getNome()."</option>";
+							}
+							?>
+						</select>
+					</div>						
 					</div>
 			  	</div>
 			  <button type="submit" class="btn btn-default center-block">Submit</button>

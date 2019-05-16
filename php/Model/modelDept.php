@@ -1,13 +1,29 @@
 <?php
 
 class ModelDept{
+	private $id;
 	private $sigla;
 	private $nome;
 
+	public function setDepartamentoFromDataBase($linha){
+        $this->setId($linha["id"])
+               ->setNome($linha["nome"])
+               ->setSigla($linha["sigla"]);
+    }
+
 	public function constructorDept($sigla, $nome){
+		$this->setId(null);
 		$this->setNome($nome);
 		$this->setSigla($sigla);
 	}
+
+	public function getId(){
+		return $this->id;
+	}
+	public function setId($id){
+		$this->id = $id;
+		return $this;
+	}	
 
 	public function getNome(){
 		return $this->nome;

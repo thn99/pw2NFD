@@ -2,16 +2,21 @@
 
 include_once $_SESSION["root"].'php/DAO/FuncionarioDAO.php';
 include_once $_SESSION["root"].'php/Model/ModelUser.php';
+include_once $_SESSION['root'].'php/Dao/DepartamentoDAO.php';
 
 class ControllerFuncionario {
 	function getAllFuncionarios(){
 		$funcDAO = new FuncionarioDAO();
 		$funcionarios=$funcDAO->getAllFuncionarios();
+		$deptDAO = new DepartamentoDAO();
+		$departamentos=$deptDAO->getAllDepartamentos();
 		include_once $_SESSION["root"].'php/View/ViewExibeFuncionarios.php';
 	}
 	function setFuncionario(){
 		$funcDAO = new FuncionarioDAO();
 		$funcionario = new ModelUser();
+		$deptDAO = new DepartamentoDAO();
+		$departamentos=$deptDAO->getAllDepartamentos();
 		$funcionario->setFuncionarioFromPOST();
 		$resultadoInsercao = $funcDAO->setFuncionario($funcionario);
 			
