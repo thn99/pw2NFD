@@ -64,7 +64,7 @@ class FuncionarioDAO {
             $statement->bindValue(":nome", $func->getNome());
             $statement->bindValue(":salario", $func->getSalario());
             $statement->bindValue(":login", $func->getLogin());
-            $statement->bindValue(":senha", $func->getSenha());
+            $statement->bindValue(":senha", md5($func->getSenha()));
             $statement->bindValue(":permissao", $func->getIdPermissao());
             $statement->bindValue(":departamento", $func->getIdDepartamento());
             return $statement->execute();
