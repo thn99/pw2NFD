@@ -36,7 +36,7 @@ class FuncionarioDAO {
 
 		try {
 			//monto a query
-            $sql = "INSERT INTO funcionario (		
+            $sql = "INSERT INTO usuario (		
                 id,
                 nome,
                 salario,

@@ -3,6 +3,6 @@
 ;<?php die('Acesso Negado'); ?>
 [mysql]
 mysql_host     = localhost
-mysql_dbname   = trabalho2
+mysql_dbname   = trabalhopw2
 mysql_username = root
 mysql_password = ""
