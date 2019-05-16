@@ -1,17 +1,17 @@
 <?php
 //Add a classe responsavel por fazer a conexao com banco de dados
 include_once $_SESSION["root"].'php/DAO/DatabaseConnection.php';
-include_once $_SESSION["root"].'php/Model/ModelUser.php';
-class FuncionarioDAO {
+include_once $_SESSION["root"].'php/Model/ModelDept.php';
+class DepartamentoDAO {
 	/*Como o PHP tem inferência de tipo, esse método, assim como outros, poderia ser mais "simples", porém estou fazendo de uma maneira que acho mais didático*/
-	function getAllFuncionarios(){	
+	function getAllDepartamentos(){	
 
 		//pego uma ref da conexão
 		$instance = DatabaseConnection::getInstance();
 		$conn = $instance->getConnection();
 
 		//Faço o select usando prepared statement
-		$statement = $conn->prepare("SELECT * FROM usuario");		
+		$statement = $conn->prepare("SELECT * FROM departamento");		
 		$statement->execute();
 
 		//linhas recebe todas as tuplas retornadas do banco		
@@ -22,36 +22,28 @@ class FuncionarioDAO {
 				return null;
 
 		//Var que irá armazenar um array de obj do tipo funcionário
-		$funcionarios;		
+		$departamentos;		
 		
 		foreach ($linhas as $value) {
-			$funcionario = new ModelUser();
-			$funcionario->setFuncionarioFromDataBase($value);			
-			$funcionarios[]=$funcionario;
+			$departamento = new ModelDept();
+			$departamento->setDepartamentoFromDataBase($value);			
+			$departamentos[]=$departamento;
 		}	
-		return $funcionarios;		
+		return $departamentos;		
 	}
 	//Retorna 1 se conseguiu inserir;
-	function setFuncionario($func){			
+	function setDepartamento($func){			
 
 		try {
 			//monto a query
-            $sql = "INSERT INTO usuario (		
+            $sql = "INSERT INTO departamento (		
                 id,
                 nome,
-                salario,
-                login,
-                senha,
-                permissao,
-                departamento_fk) 
+                sigla) 
                 VALUES (
                 :id,
                 :nome,
-                :salario,
-                :login,
-                :senha,
-                :permissao,
-                :departamento)"
+                :sigla)"
         	;
 
             //pego uma ref da conexão
@@ -62,11 +54,7 @@ class FuncionarioDAO {
 
             $statement->bindValue(":id", $func->getId());
             $statement->bindValue(":nome", $func->getNome());
-            $statement->bindValue(":salario", $func->getSalario());
-            $statement->bindValue(":login", $func->getLogin());
-            $statement->bindValue(":senha", md5($func->getSenha()));
-            $statement->bindValue(":permissao", $func->getPermissao());
-			$statement->bindValue(":departamento", $func->getDepartamento());
+            $statement->bindValue(":sigla", $func->getSigla());
             return $statement->execute();
 
         } catch (PDOException $e) {

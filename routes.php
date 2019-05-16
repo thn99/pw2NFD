@@ -26,6 +26,7 @@ echo "</pre>";*/
 //Todo controller que tiver pelo menos uma rota associada a ele deve aparecer aqui.
 include_once $_SESSION["root"].'php/Controller/ControllerLogin.php';
 include_once $_SESSION["root"].'php/Controller/ControllerFuncionario.php';
+include_once $_SESSION["root"].'php/Controller/ControllerDepartamento.php';
 
 //Sequencia de condicionais que verificam se a ação informada está roteada
 if ($action == '' || $action == 'index' || $action == 'index.php' || $action == 'login') {
@@ -40,8 +41,8 @@ else if ($action == 'exibeFuncionarios') {
 	$cFunc->getAllFuncionarios();
 }
 else if ($action == 'cadastraFuncionario') {
-	$cFunc = new ControllerFuncionario();
-	require_once $_SESSION["root"].'php/View/ViewCadastraFuncionario.php';
+	$cFunc = new ControllerDepartamento();
+	$cFunc->getAllDepartamentosCadastro();
 }
 else if ($action == 'postCadastraFuncionario') {
 	$cFunc = new ControllerFuncionario();
