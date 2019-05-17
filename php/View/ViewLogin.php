@@ -21,11 +21,11 @@ include $_SESSION["root"].'includes/header.php';
 						<div class="form-group">
 							<label for="login">Login:<span class="requerido">*</span></label>
 							<input type="text" name="login" class="form-control" id="login" 
-								value="<?php if(isset($_SESSION["flash"]["login"]))echo $_SESSION["flash"]["login"];?>">
+								value="<?php if(isset($_SESSION["flash"]["login"]))echo $_SESSION["flash"]["login"];?>" required>
 						</div>
 						<div class="form-group">
 							<label for="pwd">Senha:<span class="requerido">*</span></label>
-							<input type="password" name="senha" class="form-control" id="pwd">
+							<input type="password" name="senha" class="form-control" id="pwd" required>
 						</div>
 					</div>					
 		  		</div>

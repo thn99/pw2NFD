@@ -11,9 +11,14 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="cadastrarFuncionario"><a href="cadastraFuncionario">Cadastra Funcionário</a></li>
+              <?php if($_SESSION['permissao'] == 'admin'){
+                ?>
+                <li class="cadastrarFuncionario"><a href="cadastraFuncionario">Cadastra Funcionário</a></li>
+                <li class="cadastrarDepartamento"><a href="cadastrarDepartamento">Cadastra Departamento</a></li>
+                <?php
+              }
+              ?>
               <li class="visualizarFuncionario"><a href="exibeFuncionarios">Exibe Funcionário</a></li>
-              <li class="cadastrarDepartamento"><a href="cadastrarDepartamento">Cadastra Departamento</a></li>
               <li class="exibeDepartamento"><a href="exibeDepartamento">Exibe Departamento</a></li>
               <li class="sair"><a href="sair">Sair</a></li>              
             </ul>            

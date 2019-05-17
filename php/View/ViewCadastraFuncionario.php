@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['logado'] == true) {
+if ($_SESSION['logado'] == true && $_SESSION['permissao'] == 'admin') {
 	$titulo = "Cadastrar Funcionario";
 	include $_SESSION["root"] . 'includes/header.php';
 	?>
@@ -67,7 +67,7 @@ if ($_SESSION['logado'] == true) {
 		}
 	}
 } else {
-	header("Location: login");
+	header("Location: exibeFuncionarios");
 }
 ?>
 <!-- fim footer -->
