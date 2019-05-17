@@ -1,4 +1,7 @@
 <?php
+//READ ME
+//pra ajustar quem pode deletar/editar as coisas, só trocar a comparação da session 'permissao'
+//tá setado pra admin
 if ($_SESSION['logado'] == true) {
 	$titulo = "Exibir Funcionários";
 	include $_SESSION["root"] . 'includes/header.php';
@@ -18,9 +21,14 @@ if ($_SESSION['logado'] == true) {
 					 <th scope='col'>Nome</th>
 					 <th scope='col'>Salário</th>
 					 <th scope='col'>Permissão</th>
-					 <th scope='col'>Departamento</th>
-					 <th scope='col'>Ação</th>
-					 </tr>";
+					 <th scope='col'>Departamento</th>";
+					 if($_SESSION['permissao'] == 'admin'){
+					 	echo "<th scope='col'>Ação</th>
+					 	</tr>";
+					 }
+					 else{
+						 echo "</tr>";
+					 }
 
 					foreach ($funcionarios as $value) {
 						foreach ($departamentos as $dept) {
@@ -32,12 +40,17 @@ if ($_SESSION['logado'] == true) {
 						<td>" . $value->getNome() . "</td>
 						<td>" . $value->getSalario() . "</td>
 						<td>" . $value->getPermissao() . "</td>
-						<td>" . $departamento . "</td>
-						<td>
-							<button type='button' class='btn btn-primary' onClick={edita_usuario('" . $value->getLogin() . "');}>Editar</button>
-							<button type='button' onClick={deleta_usuario('" . $value->getLogin() . "');} class='btn btn-danger'>Delete</button>
-						</td>
-						</tr>";
+						<td>" . $departamento . "</td>";
+						if($_SESSION['permissao'] == 'admin'){
+							echo "<td>
+								<button type='button' class='btn btn-primary' onClick={edita_usuario('" . $value->getLogin() . "');}>Editar</button>
+								<button type='button' onClick={deleta_usuario('" . $value->getLogin() . "');} class='btn btn-danger'>Delete</button>
+							</td>
+							</tr>";
+						}
+						else{
+							echo "</tr>";
+						}
 					}
 					?>
 				</table>

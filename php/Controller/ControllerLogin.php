@@ -25,6 +25,7 @@ class ControllerLogin {
 			if ($funcionario!=NULL && password_verify(md5($senha), $funcionario->getSenha())) {
 				$_SESSION["logado"]=true;
 				$_SESSION["nomeLogado"]=$funcionario->getNome();
+				$_SESSION["permissao"] = $funcionario->getPermissao();
 				//Coloquei na sessão que o usuário está logado e o seu nome.
 				//Mando a página para a rota "exibeFuncionario"
 				header("Location:exibeFuncionarios");
