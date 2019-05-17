@@ -9,7 +9,14 @@ class ModelDept{
         $this->setId($linha["id"])
                ->setNome($linha["nome"])
                ->setSigla($linha["sigla"]);
-    }
+	}
+	
+	public function setDepartamentoFromPOST(){
+		$this->setId(null)
+			->setSigla($_POST['sigla'])
+			->setNome($_POST['nome']);
+
+	}
 
 	public function constructorDept($sigla, $nome){
 		$this->setId(null);
