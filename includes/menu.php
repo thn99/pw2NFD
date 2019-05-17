@@ -15,7 +15,7 @@
               <li class="visualizarFuncionario"><a href="exibeFuncionarios">Exibe Funcionário</a></li>
               <li class="cadastrarDepartamento"><a href="cadastrarDepartamento">Cadastra Departamento</a></li>
               <li class="exibeDepartamento"><a href="exibeDepartamento">Exibe Departamento</a></li>
-              <li class=""><a href="#">Sair</a></li>              
+              <li class="sair"><a href="sair">Sair</a></li>              
             </ul>            
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

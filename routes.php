@@ -63,6 +63,12 @@ else if($action == 'cadastrarDepartamento'){
 	$cDept->setDeptos();
 }
 
+else if($action == 'sair'){
+	$_SESSION['logado'] = false;
+	session_destroy();
+	header("Location: login");
+}
+
 else {
 	echo "Página não encontrada!";
 	//isso trata todo erro 404, podemos criar uma view mais elegante para exibir o aviso ao usuário.

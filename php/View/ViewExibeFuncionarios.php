@@ -14,29 +14,30 @@ if ($_SESSION['logado'] == true) {
 				<table class="table table-striped">
 					<?php
 					//$funcionarios foi criado no controller que chamou essa classe;
-					echo "<tr>";
-					echo "<th>Nome</th>";
-					echo "<th>Salário</th>";
-					echo "<th scope='col'>Permissão</th>";
-					echo "<th scope='col'>Departamento</th>";
-					echo "<th scope='col'>Ação</th>";
-					echo "</tr>";
+					echo "<tr>
+					 <th scope='col'>Nome</th>
+					 <th scope='col'>Salário</th>
+					 <th scope='col'>Permissão</th>
+					 <th scope='col'>Departamento</th>
+					 <th scope='col'>Ação</th>
+					 </tr>";
+
 					foreach ($funcionarios as $value) {
 						foreach ($departamentos as $dept) {
 							if ($dept->getId() == $value->getDepartamento()) {
 								$departamento = $dept->getNome();
 							}
 						}
-						echo "<tr>";
-						echo "<td>" . $value->getNome() . "</td>";
-						echo "<td>" . $value->getSalario() . "</td>";
-						echo "<td>" . $value->getPermissao() . "</td>";
-						echo "<td>" . $departamento . "</td>";
-						echo "<td>
-									<button type='button' class='btn btn-primary' onClick={edita_usuario('" . $value->getLogin() . "');}>Editar</button>
-									<button type='button' onClick={deleta_usuario('" . $value->getLogin() . "');} class='btn btn-danger'>Delete</button>
-								</td>";
-						echo "</tr>";
+						echo "<tr>
+						<td>" . $value->getNome() . "</td>
+						<td>" . $value->getSalario() . "</td>
+						<td>" . $value->getPermissao() . "</td>
+						<td>" . $departamento . "</td>
+						<td>
+							<button type='button' class='btn btn-primary' onClick={edita_usuario('" . $value->getLogin() . "');}>Editar</button>
+							<button type='button' onClick={deleta_usuario('" . $value->getLogin() . "');} class='btn btn-danger'>Delete</button>
+						</td>
+						</tr>";
 					}
 					?>
 				</table>
