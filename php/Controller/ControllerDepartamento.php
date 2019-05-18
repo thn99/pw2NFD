@@ -17,6 +17,18 @@ class ControllerDepartamento {
 		include_once $_SESSION["root"].'php/View/ViewCadastraFuncionario.php';
 	}
 
+	function editGetAllDepartamentos(){
+		$deptDAO = new DepartamentoDAO();
+		$departamentos=$deptDAO->getAllDepartamentos();
+		include_once $_SESSION["root"].'php/View/ViewEditaFuncionario.php';
+	}
+	
+	function editGetAllDepartamentosCadastro(){
+		$deptDAO = new DepartamentoDAO();
+		$departamentos=$deptDAO->getAllDepartamentos();
+		include_once $_SESSION["root"].'php/View/ViewEditaFuncionario.php';
+	}
+
 	function getDeptos(){
 		$deptDAO = new DepartamentoDAO();
 		$departamentos=$deptDAO->getAllDepartamentos();

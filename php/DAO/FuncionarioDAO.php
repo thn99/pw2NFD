@@ -22,7 +22,7 @@ class FuncionarioDAO {
 				return null;
 
 		//Var que irá armazenar um array de obj do tipo funcionário
-		$funcionarios;		
+				
 		
 		foreach ($linhas as $value) {
 			$funcionario = new ModelUser();
@@ -73,4 +73,25 @@ class FuncionarioDAO {
             echo "Erro ao inserir na base de dados.".$e->getMessage();
         }		
 	}
+
+	function getFuncionarioById($id){
+		$sql = "SELECT * FROM usuario WHERE id={$id}";
+		//pego uma ref da conexão
+		$instance = DatabaseConnection::getInstance();
+		$conn = $instance->getConnection();
+		//Utilizando Prepared Statements
+		$statement = $conn->prepare($sql);
+		$statement->execute();
+		$query = $statement->fetchAll();
+		//print_r($query);
+		
+		foreach($query as $value){
+			$funcionario = new ModelUser();
+			$funcionario->setFuncionarioFromDataBase($value);
+			$funcionarios[] = $funcionario;
+		}
+		return $funcionarios;
+
+	}
+
 }

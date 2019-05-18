@@ -22,13 +22,12 @@ if ($_SESSION['logado'] == true) {
 					 <th scope='col'>Salário</th>
 					 <th scope='col'>Permissão</th>
 					 <th scope='col'>Departamento</th>";
-					 if($_SESSION['permissao'] == 'admin'){
-					 	echo "<th scope='col'>Ação</th>
+					if ($_SESSION['permissao'] == 'admin') {
+						echo "<th scope='col'>Ação</th>
 					 	</tr>";
-					 }
-					 else{
-						 echo "</tr>";
-					 }
+					} else {
+						echo "</tr>";
+					}
 
 					foreach ($funcionarios as $value) {
 						foreach ($departamentos as $dept) {
@@ -41,14 +40,13 @@ if ($_SESSION['logado'] == true) {
 						<td>" . $value->getSalario() . "</td>
 						<td>" . $value->getPermissao() . "</td>
 						<td>" . $departamento . "</td>";
-						if($_SESSION['permissao'] == 'admin'){
+						if ($_SESSION['permissao'] == 'admin') {
 							echo "<td>
-								<button type='button' class='btn btn-primary' onClick={edita_usuario('" . $value->getLogin() . "');}>Editar</button>
-								<button type='button' onClick={deleta_usuario('" . $value->getLogin() . "');} class='btn btn-danger'>Delete</button>
+								<button type='button' class='btn btn-primary' onClick={editarFuncionario('" . $value->getId() . "');}>Editar</button>
+								<button type='button' onClick={excluirFuncionario('" . $value->getId() . "');} class='btn btn-danger'>Delete</button>
 							</td>
 							</tr>";
-						}
-						else{
+						} else {
 							echo "</tr>";
 						}
 					}
@@ -74,4 +72,15 @@ if ($_SESSION['logado'] == true) {
 	$(document).ready(function() {
 		$('.visualizarFuncionario').addClass('active');
 	});
+
+	function editarFuncionario(id) {		
+		window.location = 'ViewEditaFuncionario?id=' + id
+
+	}
+
+	function excluirFuncionario(id) {
+		document.body.style.cursor = 'wait';
+		
+	}
+
 </script>

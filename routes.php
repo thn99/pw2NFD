@@ -69,6 +69,12 @@ else if($action == 'sair'){
 	header("Location: login");
 }
 
+else if($action == 'ViewEditaFuncionario'){
+	$cFunc = new ControllerFuncionario();
+	$cFunc->getUserId();
+	include_once $_SESSION["root"].'\php\View\ViewEditaFuncionario.php';
+}
+
 else {
 	echo "Página não encontrada!";
 	//isso trata todo erro 404, podemos criar uma view mais elegante para exibir o aviso ao usuário.

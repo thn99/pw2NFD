@@ -34,4 +34,22 @@ class ControllerFuncionario {
 		}
 		include_once $_SESSION["root"].'php/View/ViewCadastraFuncionario.php';
 	}
+
+	function getUserId(){
+		$id = $_GET['id'];
+		$funcDAO = new FuncionarioDAO();
+		$funcionario = new ModelUser();
+
+		$funcionario = $funcDAO->getFuncionarioById($id);
+		
+		$_SESSION['edit']['id'] = $funcionario[0]->getId();
+		$_SESSION['edit']['nome'] = $funcionario[0]->getNome();
+		$_SESSION['edit']['salario'] = $funcionario[0]->getSalario();
+		$_SESSION['edit']['login'] = $funcionario[0]->getLogin();
+		$_SESSION['edit']['permissao'] = $funcionario[0]->getPermissao();
+		$_SESSION['edit']['dept'] = $funcionario[0]->getDepartamento();
+		
+		include_once $_SESSION["root"].'\php\View\ViewEditaFuncionario.php';
+	}
+
 }
