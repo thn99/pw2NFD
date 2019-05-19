@@ -11,7 +11,7 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <?php if($_SESSION['permissao'] == 'admin'){
+              <?php if($_SESSION['permissao'] == 1){
                 ?>
                 <li class="cadastrarFuncionario"><a href="cadastraFuncionario">Cadastra Funcionário</a></li>
                 <li class="cadastrarDepartamento"><a href="cadastrarDepartamento">Cadastra Departamento</a></li>

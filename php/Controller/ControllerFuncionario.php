@@ -6,11 +6,27 @@ include_once $_SESSION['root'].'php/Dao/DepartamentoDAO.php';
 
 class ControllerFuncionario {
 	function getAllFuncionarios(){
-		$funcDAO = new FuncionarioDAO();
-		$funcionarios=$funcDAO->getAllFuncionarios();
-		$deptDAO = new DepartamentoDAO();
-		$departamentos=$deptDAO->getAllDepartamentos();
-		include_once $_SESSION["root"].'php/View/ViewExibeFuncionarios.php';
+		if(!isset($_GET['order'])){
+			$funcDAO = new FuncionarioDAO();
+			$funcionarios=$funcDAO->getAllFuncionarios();
+			$deptDAO = new DepartamentoDAO();
+			$departamentos=$deptDAO->getAllDepartamentos();
+			include_once $_SESSION["root"].'php/View/ViewExibeFuncionarios.php';
+		}
+		else if($_GET['order'] == 'name'){
+			$funcDAO = new FuncionarioDAO();
+			$funcionarios=$funcDAO->getAllFuncionariosByName();
+			$deptDAO = new DepartamentoDAO();
+			$departamentos=$deptDAO->getAllDepartamentos();
+			include_once $_SESSION["root"].'php/View/ViewExibeFuncionarios.php';
+		}
+		else if($_GET['order'] == 'dept'){
+			$funcDAO = new FuncionarioDAO();
+			$funcionarios=$funcDAO->getAllFuncionariosByDept();
+			$deptDAO = new DepartamentoDAO();
+			$departamentos=$deptDAO->getAllDepartamentos();
+			include_once $_SESSION["root"].'php/View/ViewExibeFuncionarios.php';
+		}
 	}
 	function setFuncionario(){
 		$funcDAO = new FuncionarioDAO();
@@ -39,6 +55,8 @@ class ControllerFuncionario {
 		$id = $_GET['id'];
 		$funcDAO = new FuncionarioDAO();
 		$funcionario = new ModelUser();
+		$depto = new DepartamentoDAO();
+		$departamentos = $depto->getAllDepartamentos();
 
 		$funcionario = $funcDAO->getFuncionarioById($id);
 		
@@ -50,6 +68,28 @@ class ControllerFuncionario {
 		$_SESSION['edit']['dept'] = $funcionario[0]->getDepartamento();
 		
 		include_once $_SESSION["root"].'\php\View\ViewEditaFuncionario.php';
+	}
+
+	function edit(){
+		$funcDAO = new FuncionarioDAO();
+		$funcionario = new ModelUser();
+		$deptDAO = new DepartamentoDAO();
+		$departamentos=$deptDAO->getAllDepartamentos();
+		$funcionario->setFuncionarioFromPOST();
+		$resultadoInsercao = $funcDAO->editFuncionario($funcionario);
+		return $resultadoInsercao;
+		
+	}
+
+	function delete(){
+		$id = $_GET['id'];
+		$funcDAO = new FuncionarioDAO();
+		$funcionario = new ModelUser();
+		$depto = new DepartamentoDAO();
+		
+		$funcionario = $funcDAO->getFuncionarioById($id);
+		$_SESSION['delete']['id'] = $funcionario[0]->getId();
+
 	}
 
 }

@@ -42,7 +42,7 @@ else if ($action == 'exibeFuncionarios') {
 }
 else if ($action == 'cadastraFuncionario') {
 	$cFunc = new ControllerDepartamento();
-	$cFunc->getAllDepartamentosCadastro();
+	$cFunc->getAllDepartamentos();
 }
 else if ($action == 'postCadastraFuncionario') {
 	$cFunc = new ControllerFuncionario();
@@ -72,7 +72,17 @@ else if($action == 'sair'){
 else if($action == 'ViewEditaFuncionario'){
 	$cFunc = new ControllerFuncionario();
 	$cFunc->getUserId();
-	include_once $_SESSION["root"].'\php\View\ViewEditaFuncionario.php';
+}
+
+else if($action == 'postEditFuncionario'){
+	$eFunc = new ControllerFuncionario();
+	$eFunc->edit();
+}
+
+else if($action == 'deletaFuncionario'){
+	$dFunc = new ControllerFuncionario();
+	$dFunc->delete();
+	header('Location: exibeFuncionarios');
 }
 
 else {

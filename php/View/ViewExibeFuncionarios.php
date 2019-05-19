@@ -18,11 +18,11 @@ if ($_SESSION['logado'] == true) {
 					<?php
 					//$funcionarios foi criado no controller que chamou essa classe;
 					echo "<tr>
-					 <th scope='col'>Nome</th>
+					 <th scope='col' onClick={orderByName()}>Nome</th>
 					 <th scope='col'>Salário</th>
 					 <th scope='col'>Permissão</th>
-					 <th scope='col'>Departamento</th>";
-					if ($_SESSION['permissao'] == 'admin') {
+					 <th scope='col' onClick={orderByDept()}>Departamento</th>";
+					if ($_SESSION['permissao'] == 1) {
 						echo "<th scope='col'>Ação</th>
 					 	</tr>";
 					} else {
@@ -35,19 +35,21 @@ if ($_SESSION['logado'] == true) {
 								$departamento = $dept->getNome();
 							}
 						}
-						echo "<tr>
-						<td>" . $value->getNome() . "</td>
-						<td>" . $value->getSalario() . "</td>
-						<td>" . $value->getPermissao() . "</td>
-						<td>" . $departamento . "</td>";
-						if ($_SESSION['permissao'] == 'admin') {
-							echo "<td>
-								<button type='button' class='btn btn-primary' onClick={editarFuncionario('" . $value->getId() . "');}>Editar</button>
-								<button type='button' onClick={excluirFuncionario('" . $value->getId() . "');} class='btn btn-danger'>Delete</button>
-							</td>
-							</tr>";
-						} else {
-							echo "</tr>";
+						if($value->getPermissao() >= 0){
+							echo "<tr>
+							<td>" . $value->getNome() . "</td>
+							<td>" . $value->getSalario() . "</td>
+							<td>" . $value->getPermissao() . "</td>
+							<td>" . $departamento . "</td>";
+							if ($_SESSION['permissao'] == 1) {
+								echo "<td>
+									<button type='button' class='btn btn-primary' onClick={editarFuncionario('" . $value->getId() . "');}>Editar</button>
+									<button type='button' onClick={excluirFuncionario('" . $value->getId() . "');} class='btn btn-danger'>Delete</button>
+								</td>
+								</tr>";
+							} else {
+								echo "</tr>";
+							}
 						}
 					}
 					?>
@@ -79,8 +81,15 @@ if ($_SESSION['logado'] == true) {
 	}
 
 	function excluirFuncionario(id) {
-		document.body.style.cursor = 'wait';
-		
+		window.location = 'deletaFuncionario?id=' + id
+	}
+
+	function orderByName(){
+		window.location = 'exibeFuncionarios?order=name'
+	}
+
+	function orderByDept(){
+		window.location = 'exibeFuncionarios?order=dept'
 	}
 
 </script>

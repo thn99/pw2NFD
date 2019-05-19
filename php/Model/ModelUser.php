@@ -32,8 +32,20 @@ class ModelUser {
                ->setSalario($_POST["salario"])
                ->setLogin($_POST['login'])
                ->setSenha($_POST['senha'])
-               ->setPermissao(1)
+               ->setPermissao($_POST['permissao'])
                ->setDepartamento($_POST['departamento']);
+        
+    }
+
+    public function editFuncionarioFromPost(){
+        $this->setId(null)
+               ->setNome($_POST["nome"])
+               ->setSalario($_POST["salario"])
+               ->setLogin($_POST['login'])
+               ->setSenha($_POST['senha'])
+               ->setPermissao($_POST['permissao'])
+               ->setDepartamento($_POST['departamento']);
+        
     }
 
     /**

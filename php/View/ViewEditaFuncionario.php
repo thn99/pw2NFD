@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['logado'] == true && $_SESSION['permissao'] == 'admin') {
+if ($_SESSION['logado'] == true && $_SESSION['permissao'] == 1) {
 	$titulo = "Editar Funcionario";
 	include $_SESSION["root"] . 'includes/header.php';
 	?>
@@ -11,7 +11,7 @@ if ($_SESSION['logado'] == true && $_SESSION['permissao'] == 'admin') {
 			<!-- fim menu -->
 			<div id="principal">
 				<h1 class="text-center">Edição de Funcionário</h1>
-				<form action="postCadastraFuncionario" method="POST">
+				<form action="postEditFuncionario" method="POST">
 					<div class="row">
 						<?php if (isset($_SESSION["flash"]["msg"])) {
 							if ($_SESSION["flash"]["sucesso"] == false)
@@ -28,6 +28,13 @@ if ($_SESSION['logado'] == true && $_SESSION['permissao'] == 'admin') {
 							<div class="form-group">
 								<label for="pwd">Senha:<span class="requerido">*</span></label>
 								<input type="password" name="senha" class="form-control" id="pwd" value="">
+							</div>
+							<div class="form-group">
+							<label for="permissao">Permissão: <span class="requerido">*</span></label>
+							<select name="permissao" class="form-control" id="permissao">
+									<option value="0">0</option>
+									<option value="1">1</option>
+							</select>
 							</div>
 
 						</div>

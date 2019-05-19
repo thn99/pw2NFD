@@ -5,13 +5,8 @@ include_once $_SESSION["root"].'php/Model/ModelUser.php';
 include_once $_SESSION['root'].'php/Dao/DepartamentoDAO.php';
 
 class ControllerDepartamento {
-	function getAllDepartamentos(){
-		$deptDAO = new DepartamentoDAO();
-		$departamentos=$deptDAO->getAllDepartamentos();
-		include_once $_SESSION["root"].'php/View/ViewCadastraFuncionarios.php';
-	}
 	
-	function getAllDepartamentosCadastro(){
+	function getAllDepartamentos(){
 		$deptDAO = new DepartamentoDAO();
 		$departamentos=$deptDAO->getAllDepartamentos();
 		include_once $_SESSION["root"].'php/View/ViewCadastraFuncionario.php';

@@ -7,7 +7,7 @@ class ModelDept{
 
 	public function setDepartamentoFromDataBase($linha){
         $this->setId($linha["id"])
-               ->setNome($linha["nome"])
+               ->setNome($linha["dnome"])
                ->setSigla($linha["sigla"]);
 	}
 	

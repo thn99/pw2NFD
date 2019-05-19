@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['logado'] == true && $_SESSION['permissao'] == 'admin') {
+if ($_SESSION['logado'] == true && $_SESSION['permissao'] == 1) {
 	$titulo = "Cadastrar Funcionario";
 	include $_SESSION["root"] . 'includes/header.php';
 	?>
@@ -28,6 +28,13 @@ if ($_SESSION['logado'] == true && $_SESSION['permissao'] == 'admin') {
 							<div class="form-group">
 								<label for="pwd">Senha:<span class="requerido">*</span></label>
 								<input type="password" name="senha" class="form-control" id="pwd" value="">
+							</div>
+							<div class="form-group">
+								<label for="permissao">Permissão: <span class="requerido">*</span></label>
+								<select name="permissao" class="form-control" id="permissao">
+									<option value="0">0</option>
+									<option value="1">1</option>
+								</select>
 							</div>
 
 						</div>
