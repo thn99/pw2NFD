@@ -78,6 +78,7 @@ class ControllerFuncionario {
 		$funcionario->setFuncionarioFromPOST();
 		$resultadoInsercao = $funcDAO->editFuncionario($funcionario);
 		return $resultadoInsercao;
+		include_once $_SESSION["root"].'\php\View\ViewExibeFuncionarios.php';
 		
 	}
 
@@ -85,10 +86,12 @@ class ControllerFuncionario {
 		$id = $_GET['id'];
 		$funcDAO = new FuncionarioDAO();
 		$funcionario = new ModelUser();
-		$depto = new DepartamentoDAO();
-		
 		$funcionario = $funcDAO->getFuncionarioById($id);
+		print_r($funcionario);
 		$_SESSION['delete']['id'] = $funcionario[0]->getId();
+		$resultadoInsercao = $funcDAO->deletaFuncionario($funcionario);
+		return $resultadoInsercao;
+		include_once $_SESSION["root"].'\php\View\ViewExibeFuncionarios.php';
 
 	}
 

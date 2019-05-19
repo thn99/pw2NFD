@@ -77,6 +77,7 @@ else if($action == 'ViewEditaFuncionario'){
 else if($action == 'postEditFuncionario'){
 	$eFunc = new ControllerFuncionario();
 	$eFunc->edit();
+	header("Location: exibeFuncionarios");
 }
 
 else if($action == 'deletaFuncionario'){

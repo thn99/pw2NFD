@@ -135,42 +135,58 @@ class FuncionarioDAO
 
 	function editFuncionario($func)
 	{
-		try{
-			$senha = md5($_POST['senha']);
-			$sql = "UPDATE usuario SET login='{$func->getLogin()}',
-			nome='{$func->getNome()}',
-			salario={$func->getSalario()},
-			senha='{$senha}',
-			permissao={$func->getPermissao()},
-			departamento_fk={$func->getDepartamento()}
-			WHERE usuario.id={$_SESSION['edit']['id']}";
+		try {
+			if ($_POST['senha'] == '') {
+				$senha = md5($_POST['senha']);
+				$sql = "UPDATE usuario SET login='{$func->getLogin()}',
+				nome='{$func->getNome()}',
+				salario={$func->getSalario()},
+				permissao={$func->getPermissao()},
+				departamento_fk={$func->getDepartamento()}
+				WHERE usuario.id={$_SESSION['edit']['id']}";
+
+				$instance = DatabaseConnection::getInstance();
+				$conn = $instance->getConnection();
+				//Utilizando Prepared Statements
+				$statement = $conn->prepare($sql);
+
+				return $statement->execute();
+			}
+			else{
+				$senha = md5($_POST['senha']);
+				$sql = "UPDATE usuario SET login='{$func->getLogin()}',
+				nome='{$func->getNome()}',
+				salario={$func->getSalario()},
+				senha='{$senha}',
+				permissao={$func->getPermissao()},
+				departamento_fk={$func->getDepartamento()}
+				WHERE usuario.id={$_SESSION['edit']['id']}";
 	
-			$instance = DatabaseConnection::getInstance();
-			$conn = $instance->getConnection();
-			//Utilizando Prepared Statements
-			$statement = $conn->prepare($sql);
-			
-			return $statement->execute();
-			
-		}
-		catch(PDOException $e){
+				$instance = DatabaseConnection::getInstance();
+				$conn = $instance->getConnection();
+				//Utilizando Prepared Statements
+				$statement = $conn->prepare($sql);
+	
+				return $statement->execute();
+
+			}
+		} catch (PDOException $e) {
 			echo "Erro ao inserir na base de dados." . $e->getMessage();
-		}	
+		}
 	}
 
-	function deletaFuncionario(){
-		try{
+	function deletaFuncionario()
+	{
+		try {
 			$sql = "UPDATE usuario SET permissao = -1 WHERE id={$_SESSION['delete']['id']}";
 			$instance = DatabaseConnection::getInstance();
 			$conn = $instance->getConnection();
 			//Utilizando Prepared Statements
 			$statement = $conn->prepare($sql);
-			
 			$statement->execute();
-		}
-		catch(PDOException $e){
+		} catch (PDOException $e) {
 			echo "Erro ao inserir na base de dados." . $e->getMessage();
-		}	
+		}
 	}
 
 

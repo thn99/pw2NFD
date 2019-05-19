@@ -25,10 +25,17 @@ class ControllerLogin {
 			if ($funcionario!=NULL && password_verify(md5($senha), $funcionario->getSenha())) {
 				$_SESSION["logado"]=true;
 				$_SESSION["nomeLogado"]=$funcionario->getNome();
-				$_SESSION["permissao"] = $funcionario->getPermissao();
-				//Coloquei na sessão que o usuário está logado e o seu nome.
-				//Mando a página para a rota "exibeFuncionario"
-				header("Location:exibeFuncionarios");
+				if($funcionario->getPermissao() == -1){
+					session_destroy();
+					header("Location: login");
+				}
+				else{
+					$_SESSION["permissao"] = $funcionario->getPermissao();
+					//Coloquei na sessão que o usuário está logado e o seu nome.
+					//Mando a página para a rota "exibeFuncionario"
+					header("Location:exibeFuncionarios");
+
+				}
 			}
 			else{
 				$_SESSION["flash"]["login"]=$login;
