@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['logado'] == true && $_SESSION['permissao'] == 'admin') {
+if ($_SESSION['logado'] == true && $_SESSION['permissao'] == 1) {
 
 	$titulo = "Cadastrar Funcionario";
 	include $_SESSION["root"] . 'includes/header.php';

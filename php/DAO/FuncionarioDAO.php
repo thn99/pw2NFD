@@ -63,19 +63,7 @@ class FuncionarioDAO
 		return $funcionarios;
 	}
 
-	function getAllFuncionariosByDept()
-	{
-		//pego uma ref da conexão
-		$instance = DatabaseConnection::getInstance();
-		$conn = $instance->getConnection();
-
-		//Faço o select usando prepared statement
-		$statement = $conn->prepare("SELECT * FROM usuario f join departamento d where f.departamento_fk = d.id order by d.dnome");
-		$statement->execute();
-
-		//linhas recebe todas as tuplas retornadas do banco		
-		$linhas = $statement->fetchAll();
-
+	function getFuncionarioByDept() {
 		//Verifico se houve algum retorno, senão retorno null
 		if (count($linhas) == 0)
 			return null;

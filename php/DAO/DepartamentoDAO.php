@@ -38,7 +38,7 @@ class DepartamentoDAO {
 			//monto a query
             $sql = "INSERT INTO departamento (		
                 id,
-                nome,
+                dnome,
                 sigla) 
                 VALUES (
                 :id,
