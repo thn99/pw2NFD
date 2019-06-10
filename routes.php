@@ -27,6 +27,7 @@ echo "</pre>";*/
 include_once $_SESSION["root"].'php/Controller/ControllerLogin.php';
 include_once $_SESSION["root"].'php/Controller/ControllerFuncionario.php';
 include_once $_SESSION["root"].'php/Controller/ControllerDepartamento.php';
+include_once $_SESSION["root"].'php/Controller/ControllerProjeto.php';
 
 //Sequencia de condicionais que verificam se a ação informada está roteada
 if ($action == '' || $action == 'index' || $action == 'index.php' || $action == 'login') {
@@ -61,6 +62,18 @@ else if($action == 'exibeDepartamento'){
 else if($action == 'cadastrarDepartamento'){
 	$cDept = new ControllerDepartamento();
 	$cDept->setDeptos();
+}
+else if($action == 'exibeProjetos'){
+	$cProjeto = new ControllerProjeto();
+	$cProjeto->getAllProjetos();
+}
+else if($action == 'cadastrarProjetos'){
+	$cProjeto = new ControllerProjeto();
+	$cProjeto->setProjetos();
+}
+else if ($action == 'postCadastraProjetos') {
+	$cProjeto = new ControllerProjeto();
+	$cProjeto->setProjetosDAO();
 }
 
 else if($action == 'sair'){
