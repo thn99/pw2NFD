@@ -23,10 +23,10 @@ if ($_SESSION['logado'] == true) {
 					 <th scope='col'>Permissão</th>
 					 <th scope='col' onClick={orderByDept()}>Departamento</th>";
 					if ($_SESSION['permissao'] == 1) {
-						echo "<th scope='col'>Ação</th>
+						echo "<th>Projeto</th><th scope='col'>Ação</th>
 					 	</tr>";
 					} else {
-						echo "</tr>";
+						echo "<th>Projeto</th></tr>";
 					}
 
 					foreach ($funcionarios as $value) {
@@ -35,12 +35,21 @@ if ($_SESSION['logado'] == true) {
 								$departamento = $dept->getNome();
 							}
 						}
+						foreach($projetos as $proj){
+							if($proj->getId() == $value->getProjeto()){
+								$projeto = $proj->getNome();
+							}
+						}
+
 						if($value->getPermissao() >= 0){
 							echo "<tr>
 							<td>" . $value->getNome() . "</td>
 							<td>" . $value->getSalario() . "</td>
 							<td>" . $value->getPermissao() . "</td>
-							<td>" . $departamento . "</td>";
+							<td>" . $departamento . "</td>
+							<td>". $projeto ."</td>";
+							
+
 							if ($_SESSION['permissao'] == 1) {
 								echo "<td>
 									<button type='button' class='btn btn-primary' onClick={editarFuncionario('" . $value->getId() . "');}>Editar</button>

@@ -11,6 +11,9 @@ class ControllerFuncionario {
 			$funcionarios=$funcDAO->getAllFuncionarios();
 			$deptDAO = new DepartamentoDAO();
 			$departamentos=$deptDAO->getAllDepartamentos();
+			$projDAO = new ProjetoDAO();
+			$projetos = $projDAO->getAllProjetos();
+			
 			include_once $_SESSION["root"].'php/View/ViewExibeFuncionarios.php';
 		}
 		else if($_GET['order'] == 'name'){
@@ -18,6 +21,8 @@ class ControllerFuncionario {
 			$funcionarios=$funcDAO->getAllFuncionariosByName();
 			$deptDAO = new DepartamentoDAO();
 			$departamentos=$deptDAO->getAllDepartamentos();
+			$projDAO = new ProjetoDAO();
+			$projetos = $projDAO->getAllProjetos();
 			include_once $_SESSION["root"].'php/View/ViewExibeFuncionarios.php';
 		}
 		else if($_GET['order'] == 'dept'){
@@ -25,6 +30,8 @@ class ControllerFuncionario {
 			$funcionarios=$funcDAO->getAllFuncionariosByDept();
 			$deptDAO = new DepartamentoDAO();
 			$departamentos=$deptDAO->getAllDepartamentos();
+			$projDAO = new ProjetoDAO();
+			$projetos = $projDAO->getAllProjetos();
 			include_once $_SESSION["root"].'php/View/ViewExibeFuncionarios.php';
 		}
 	}
@@ -57,6 +64,8 @@ class ControllerFuncionario {
 		$funcionario = new ModelUser();
 		$depto = new DepartamentoDAO();
 		$departamentos = $depto->getAllDepartamentos();
+		$projDAO = new ProjetoDAO();
+		$projetos = $projDAO->getAllProjetos();
 
 		$funcionario = $funcDAO->getFuncionarioById($id);
 		
@@ -66,6 +75,7 @@ class ControllerFuncionario {
 		$_SESSION['edit']['login'] = $funcionario[0]->getLogin();
 		$_SESSION['edit']['permissao'] = $funcionario[0]->getPermissao();
 		$_SESSION['edit']['dept'] = $funcionario[0]->getDepartamento();
+		$_SESSION['edit']['proj'] = $funcionario[0]->getProjeto();
 		
 		include_once $_SESSION["root"].'\php\View\ViewEditaFuncionario.php';
 	}

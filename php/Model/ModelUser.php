@@ -7,7 +7,8 @@ class ModelUser {
 	public $login;
 	public $senha; 
 	public $permissao;
-	public $departamento;
+    public $departamento;
+    public $projeto;
 
     /**
      * Popula um obj funcionario com os dados vindos da tabela funcionario. Funciona como um construtor
@@ -23,7 +24,8 @@ class ModelUser {
                ->setLogin($linha['login'])
                ->setSenha($linha['senha'])
                ->setPermissao($linha['permissao'])
-               ->setDepartamento($linha['departamento_fk']);
+               ->setDepartamento($linha['departamento_fk'])
+               ->setProjeto($linha['projeto_resp']);
     }
     public function setFuncionarioFromPOST(){
 
@@ -44,7 +46,8 @@ class ModelUser {
                ->setLogin($_POST['login'])
                ->setSenha($_POST['senha'])
                ->setPermissao($_POST['permissao'])
-               ->setDepartamento($_POST['departamento']);
+               ->setDepartamento($_POST['departamento'])
+               ->setProjeto($_POST['projeto_resp']);
         
     }
 
@@ -211,6 +214,16 @@ class ModelUser {
     public function setDepartamento($departamento)
     {
         $this->departamento = $departamento;
+
+        return $this;
+    }
+
+    public function getProjeto(){
+        return $this->projeto;
+    }
+    public function setProjeto($projeto)
+    {
+        $this->projeto = $projeto;
 
         return $this;
     }
